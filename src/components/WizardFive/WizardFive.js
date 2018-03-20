@@ -1,6 +1,9 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux'
+import { updateREAgent } from '../../ducks/reducer'
+
 class WizardFive extends Component {
 
     render(){
@@ -19,4 +22,11 @@ class WizardFive extends Component {
     }
 }
 
-export default WizardFive;
+function mapStateToProps(state) {
+    let { realEstateAgent } = state
+    return {
+        realEstateAgent
+    }
+}
+
+export default connect(mapStateToProps, {updateREAgent})(WizardFive);

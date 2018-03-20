@@ -1,6 +1,9 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux'
+import { updateCost, updateDownPayment } from '../../ducks/reducer'
+
 class WizardSix extends Component {
 
     render(){
@@ -25,4 +28,14 @@ class WizardSix extends Component {
     }
 }
 
-export default WizardSix;
+function mapStateToProps(state) {
+    
+    let {cost, downPayment} = state
+
+    return {
+        cost,
+        downPayment
+    }
+}
+
+export default connect(mapStateToProps, {updateCost, updateDownPayment})(WizardSix);
